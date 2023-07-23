@@ -24,8 +24,8 @@ public class TestRickAndMorty {
     @Test
     public void test2() {
         JSONObject info = episodes.getJSONObject("info");
-        String nextUrl = info.optString("next"); // Используйте optString(), чтобы получить значение "next" как строку или "" (пустую строку), если оно равно null.
-        while (!nextUrl.isEmpty()) { // Проверьте, что значение "nextUrl" не пусто, чтобы продолжить выполнение цикла.
+        String nextUrl = info.optString("next"); //  получить значение строки "next" или " " (пустую строку), если оно равно null.
+        while (!nextUrl.isEmpty()) { // проверка, что значение "nextUrl" не пустое
             JSONObject nextEpisodes = new JSONObject(ApiRequest.getRest(nextUrl));
             JSONArray results = nextEpisodes.getJSONArray("results");
             for (int i = 0; i < results.length(); i++) {
@@ -35,7 +35,7 @@ public class TestRickAndMorty {
                 System.out.println("\"name\": \"" + name + "\",");
                 System.out.println("\"air_date\": \"" + airDate + "\",");
             }
-            nextUrl = nextEpisodes.getJSONObject("info").optString("next"); // Используйте optString() для извлечения значения "next" из объекта info.
+            nextUrl = nextEpisodes.getJSONObject("info").optString("next"); // получаю значения "next" из объукта info.
         }
     }
 }
